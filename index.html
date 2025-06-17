@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IRICRobotWorld</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        /* .author-block {
+            display: none;
+        }
+
+        .publication-authors:hover .author-block {
+            display: block;
+        } */
+        .author-block {
+            display: inline-block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        /* 更贴边的容器 */
+        .custom-container {
+            width: 85%;
+            padding-left: 1.5vw;
+            padding-right: 1.5vw;
+            box-sizing: border-box;
+        }
+
+        /* 可选：移除 Bulma 默认的 .container 最大宽度限制 */
+        .container {
+            max-width: none !important;
+            width: 85% !important;
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- 机器人标题-作者-作者logo -->
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">
+                            嘉定区<br>具身智能机器人训练场数据
+                        </h1>
+    
+                        <!-- 始终显示，无交互 -->
+                        <div class="is-size-5 publication-authors always-visible-authors no-hover">
+                            <span class="author-block" style="font-size: 30px;">IRIC智能制造与机器人国际联创中心</span>，
+                            <span class="author-block" style="font-size: 30px;">帝蛮神(上海)科技有限公司</span>，
+                            <span class="author-block" style="font-size: 30px;">上海大学</span>，
+                            <span class="author-block" style="font-size: 30px;">上海大寰机器人科技有限公司</span>，
+                            <br>
+                            <span class="author-block" style="font-size: 30px;">珞石机器人集团有限公司</span>，
+                            <span class="author-block" style="font-size: 30px;">杭州云深处科技有限公司</span>，
+                            <span class="author-block" style="font-size: 30px;">跨维树人科技(上海)有限公司</span>，
+                            <span class="author-block" style="font-size: 30px;">浙江丞士机器人有限公司</span>
+                            <br>
+                            <span class="is-size-6"><sup>*</sup>Co-Lead</span>
+                            <!-- <span class="is-size-6"><sup>*</sup>(排名不分先后)</span> -->
+                        </div>
+    
+                        <div class="column has-text-centered">
+                            <img src="figures/首页/logo.png" class="interpolation-image" alt="" style="display: block; width: 100%; margin-left: auto; margin-right: auto" />
+                        </div>
+    
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a target="_blank" href="https://github.com/iRICRobot/iRICRobot.git" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-database"></i>
+                                        </span>
+                                        <span><b>数据</b></span>
+                                    </a>
+                                    <a target="_blank" href="https://pan.baidu.com/s/1GbqmQpdZ9TDiSDQ4HmcHfA?pwd=iRIC" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-cloud"></i>
+                                        </span>
+                                        <span><b>百度网盘</b></span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 样式修正：始终显示 + 禁止 hover 动画 -->
+        <style>
+            .always-visible-authors {
+                opacity: 1 !important;
+                visibility: visible !important;
+                display: block !important;
+                transition: none !important;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+    
+            .author-block {
+                display: inline-block;
+                margin: 0 0.3em;
+                white-space: nowrap;
+                pointer-events: none; /* 禁用鼠标事件 */
+            }
+    
+            .always-visible-authors * {
+                transition: none !important;
+                animation: none !important;
+            }
+    
+            /* 移除 hover 效果 */
+            .always-visible-authors:hover {
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
+                background: none !important;
+            }
+    
+            .always-visible-authors:hover * {
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
+                background: none !important;
+            }
+        </style>
+    </section>
+    <!-- 机器人标题-作者-作者logo -->
+    
+    <!-- 具身智能机器人数据集概览-标题 -->
+    <section class="hero"  style="margin-top: -30px;">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <!-- <img src="figures/首页/overview.png" alt="Overview of ARIO Dataset" style="display: block; max-width: 100%; height: auto; margin: 0 auto;" /> -->
+                        <div class="content has-text-justified">
+                            <div class="column has-text-centered">
+                            <!-- <img src="figures/首页/总览2.png" class="interpolation-image" alt="" style="display: block; width: 100%; margin-left: auto; margin-right: auto" /> -->
+                            <img src="figures/首页/jiagou.png" class="interpolation-image" alt="" style="display: block; width: 100%; height: auto; margin: 0 auto;" />
+
+                        </div>
+                        <div class="content has-text-justified">
+                            <br>
+                            <div class="columns is-centered has-text-centered">
+                              <b>具身智能机器人数据集概览</b>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 具身智能机器人数据集概览-标题 -->
+
+    <!-- 数据集介绍 -->
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div class="content has-text-justified">
+                        <h2 class="title is-3 has-text-centered">数据集介绍</h2>
+                        <p  style="font-size: 20px;">
+                            我们打造了全球首个综合性具身智能训练场数据集，覆盖全域室内外场景、全品类机器人硬件与多元任务类型，全面服务于具身智能研究与应用落地。数据集采集自工业一类场景、工业二类场景、工业三类场景、公共商业场景、居家生活场景、医疗康养场景、教育科研场景、市政运维场景、农林野外场景和低空水域场景等十类典型应用环境，包括轮式机器人、四足机器人、人形机器人、水下机器人、无人机、医疗机器人、灵巧手等机器人多种形态。平台融合视觉、激光雷达、惯性导航、语音语义、力觉反馈等多模态感知信息，支持操作控制类、移动类、多模态交互等多种任务类型。所有数据均来源于真实复杂环境，经过严格标注与标准化处理，兼容主流开发框架，致力于构建面向未来的“多模态、多场景、多形态”的机器人感知与认知生态，为具身智能的发展注入坚实的数据驱动力。
+                        </p>
+            
+                      </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 数据集介绍 -->
+    
+    <!-- 机器人本体类型-图片循环播放 -->
+    <section class="section" style="margin-top: 10px;">
+        <div class="container is-max-desktop">
+            <div id="carousel-container" style="position: relative; width: 100%; overflow: hidden; padding: 20px 0; text-align: center;margin-top: -30px;">
+                <button class="carousel-arrow left" style="position:absolute; top:50%; left:10px; transform:translateY(-50%); font-size:30px; background:rgba(0,0,0,0.3); color:#fff; border:none; cursor:pointer; padding:10px; z-index:10;" onclick="prevSlide()">‹</button>
+                <button class="carousel-arrow right" style="position:absolute; top:50%; right:10px; transform:translateY(-50%); font-size:30px; background:rgba(0,0,0,0.3); color:#fff; border:none; cursor:pointer; padding:10px; z-index:10;" onclick="nextSlide()">›</button>
+    
+                <div id="carousel" style="display: flex; justify-content: center; align-items: center; gap: 60px;"> <!-- 改变左右间距大小 -->
+                    <img id="img-prev" class="carousel-img" style="width: 30%; opacity: 0.6; transition: all 0.5s;">
+                    <img id="img-current" class="carousel-img" style="width: 40%; transform: scale(1.05); box-shadow: 0 0 10px rgba(0,0,0,0.2); transition: all 0.5s;">
+                    <img id="img-next" class="carousel-img" style="width: 30%; opacity: 0.6; transition: all 0.5s;">
+                </div>
+    
+                <div id="carousel-dots" style="margin-top: 50px;"></div>
+            </div>
+    
+            <script>
+                const images = [
+                    "figures/首页/1.jpg",
+                    "figures/首页/2.jpg",
+                    "figures/首页/3.jpg",
+                    "figures/首页/4.jpg",
+                    "figures/首页/5.jpg",
+                    "figures/首页/6.jpg",
+                    "figures/首页/7.jpg",
+                    "figures/首页/8.jpg",
+                    "figures/首页/9.jpg",
+                    "figures/首页/10.jpg",
+                    "figures/首页/11.jpg",
+                    "figures/首页/12.jpg",
+                    "figures/首页/13.jpg",
+                ];
+    
+                let currentIndex = 0;
+    
+                const imgPrev = document.getElementById("img-prev");
+                const imgCurrent = document.getElementById("img-current");
+                const imgNext = document.getElementById("img-next");
+                const dotsContainer = document.getElementById("carousel-dots");
+    
+                let intervalId = null;
+    
+                function preloadImages() {
+                    images.forEach(src => {
+                        const img = new Image();
+                        img.src = src;
+                    });
+                }
+    
+                function updateCarousel() {
+                    const prevIndex = (currentIndex - 1 + images.length) % images.length;
+                    const nextIndex = (currentIndex + 1) % images.length;
+    
+                    // 只替换 src，DOM 元素不变，减少闪烁
+                    imgPrev.src = images[prevIndex];
+                    imgCurrent.src = images[currentIndex];
+                    imgNext.src = images[nextIndex];
+    
+                    updateDots();
+                }
+    
+                function updateDots() {
+                    dotsContainer.innerHTML = "";
+                    images.forEach((_, idx) => {
+                        const dot = document.createElement("span");
+                        dot.style = "display:inline-block; width:10px; height:10px; margin:5px; border-radius:50%; background:#ccc; cursor:pointer;";
+                        if (idx === currentIndex) dot.style.background = "#333";
+                        dot.onclick = () => {
+                            currentIndex = idx;
+                            updateCarousel();
+                            restartInterval();
+                        };
+                        dotsContainer.appendChild(dot);
+                    });
+                }
+    
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    updateCarousel();
+                    restartInterval();
+                }
+    
+                function prevSlide() {
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    updateCarousel();
+                    restartInterval();
+                }
+    
+                function restartInterval() {
+                    clearInterval(intervalId);
+                    intervalId = setInterval(nextSlide, 1000); // 修改播放间隔
+                }
+    
+                // 鼠标悬停暂停自动播放
+                document.getElementById("carousel-container").addEventListener("mouseenter", () => clearInterval(intervalId));
+                document.getElementById("carousel-container").addEventListener("mouseleave", () => restartInterval());
+    
+                preloadImages();
+                updateCarousel();
+                intervalId = setInterval(nextSlide, 1000);
+            </script>
+            <p style="text-align: center; margin-top: -20px; font-size: 20px">数据采集机器人本体类型</p>
+    
+        </div>
+    </section>
+    <!-- 机器人本体类型-图片循环播放 -->
+
+
+    <!-- 操作类-介绍 -->
+    <section class="section hero is-light">
+        <div class="container is-max-desktop" >
+            <div class="columns is-centered" >
+                <div class="column is-four-fifths" >
+                    <div class="content has-text-justified" >
+                        <h2 class="title is-3 has-text-centered">
+                            <a href="https://github.com/iRICRobot/iRICRobot/tree/main/Operation" style="color: blue; text-decoration: underline;">
+                                操作类
+                            </a>
+                        </h2>
+                        
+                        <p style="text-decoration: none; font-size: 20px">
+                            作为全球首个系统性且多模态融合的操作类数据集，本数据集全面记录了机器人在抓取、放置、路径调整与物体操控等关键任务中的真实行为与复杂环境响应，集成视觉、深度、关节角度、末端轨迹及力觉反馈等高精度数据，具备卓越的时序一致性与结构完整性。广泛覆盖工业自动化、智能仓储、医疗辅助、柔性制造及家用服务等多样化场景，支持运动建模、模仿学习、强化学习与视觉伺服等前沿技术发展。其设计兼顾现实复杂性与通用适用性，为机器人从规则驱动向智能学习的跨越提供坚实数据基础，显著提升机器人具身认知与环境交互能力，推动全球具身智能操作研究迈入新纪元。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 操作类-介绍 -->
+
+    <!-- 操作类-视频 -->
+    <section class="section" style="margin-top: -1px;">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered">
+                    <style>
+                        .dvima {
+                            font-size: inherit;
+                            color: inherit;
+                            text-decoration: none;
+                            transition: color 0.3s;
+                        }
+
+                        .dvima:hover {
+                            color: #007bff;
+                            /* 蓝色 */
+                        }
+                    </style>
+                    <div class="columns">
+                        <div class="column" style="display: flex; flex-direction: column; align-items: center;">
+                            <video controls style="width: 50%; height: auto;">
+                                <source src="videos/Operation/机械臂2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="text-align: center; margin-top: 10px; font-size: 20px">单-双运动规划数据采集</p>
+                        </div>
+                    </div>
+                    <div class="columns">
+                        <div class="column">
+                            <video controls style="width: 100%; height: auto;">
+                                <source src="videos/Operation/双臂1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="text-align: center; margin-top: 10px; font-size: 20px">双臂稳定放置姿态数据采集</p>
+                        </div>
+                        <div class="column">
+                            <video controls style="width: 100%; height: auto;">
+                                <source src="videos/Operation/清洗机器人.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="text-align: center; margin-top: 10px; font-size: 20px">单臂清洗数据采集</p>
+                        </div>
+                        <div class="column">
+                            <video controls style="width: 100%; height: auto;">
+                                <source src="videos/Operation/双臂排爆机器人.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="text-align: center; margin-top: 10px; font-size: 20px">双臂协同数据采集</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 操作类-视频 -->
+
+    <!-- 移动类-介绍 -->
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div class="content has-text-justified">
+                        <h2 class="title is-3 has-text-centered">
+                            <a href="https://github.com/iRICRobot/iRICRobot/tree/main/Move" style="color: blue; text-decoration: underline;">
+                                移动类
+                            </a>
+                        </h2>
+                        
+                        <p style="text-decoration: none; font-size: 20px">
+                            作为赋能机器人自主导航与环境感知的全球领先移动类数据集，本数据集覆盖从室内工厂到户外城市的多样化真实场景，集成激光雷达点云、视觉图像、深度信息、惯性测量与GPS轨迹等多源高精度数据，全面支持路径规划、同步定位与建图（SLAM）、动态避障及多传感器融合等核心任务。数据集广泛应用于多传感器融合定位、动态环境理解、语义地图构建及障碍物识别与跟踪等技术前沿，适配多样导航策略与智能学习模型。面向无人配送、工业移动平台、安防巡检及自动驾驶等复杂场景，精准应对狭窄通道、复杂地形、多变光照及高动态干扰等现实挑战。采用标准化数据格式，便于无缝集成至主流机器人开发框架，加速实验验证与系统部署，成为智能移动机器人领域不可或缺的核心技术基石。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 移动类-介绍 -->
+
+
+    <!-- 移动类-视频-->
+    <section class="section" style="margin-top: -50px;">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered">
+                    <style>
+                        .dvima {
+                            font-size: inherit;
+                            color: inherit;
+                            text-decoration: none;
+                            transition: color 0.3s;
+                        }
+
+                        .dvima:hover {
+                            color: #007bff;
+                            /* 蓝色 */
+                        }
+                    </style>
+                    <div class="columns">
+                        <div class="column">
+                            <video controls style="width: 100%; height: auto;">
+                                <source src="videos/Move/训练场.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="text-align: center; margin-top: 10px; font-size: 20px">手持设备-园区建图</p>
+                        </div>
+                        <div class="column">
+                            <video controls style="width: 100%; height: auto;">
+                                <source src="videos/Move/多层楼梯建图.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="text-align: center; margin-top: 10px; font-size: 20px">室内-多层楼道建图</p>
+                        </div>
+                    </div>
+                    <div class="columns">
+                        <div class="column">
+                            <video controls style="width: 100%; height: auto;">
+                                <source src="videos/Move/下楼梯.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="text-align: center; margin-top: 10px; font-size: 20px">下楼梯数据采集</p>
+                        </div>
+                        <div class="column">
+                            <video controls style="width: 100%; height: auto;">
+                                <source src="videos/Move/复杂曲率攀爬机器人/复杂曲率攀爬机器人-2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="text-align: center; margin-top: 10px; font-size: 20px ">复杂曲率攀爬数据采集</p>
+                        </div>
+                        <div class="column">
+                            <video controls style="width: 100%; height: auto;">
+                                <source src="videos/Move/变管径内壁维护机器人/变管径内壁维护机器人-1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="text-align: center; margin-top: 10px; font-size: 20px">管径维护数据采集</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 移动类-视频-->
+
+    <!-- 交互类-介绍 -->
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div class="content has-text-justified">
+                        <h2 class="title is-3 has-text-centered">
+                            <a href="https://github.com/iRICRobot/iRICRobot/tree/main/Interaction" style="color: blue; text-decoration: underline;">
+                                交互类
+                            </a>
+                        </h2>
+                        
+                        <p style="text-decoration: none; font-size: 20px">
+                            交互类数据集作为全球首个系统性融合多模态感知与语言理解的关键资源，集成图像、音频、文本与行为标签等多源数据，覆盖语音识别与合成、视觉感知、语言理解、语义匹配及多模态融合等前沿技术领域。该数据集支持机器人精准解析人类语音指令、视觉目标与交互意图，推动语音唤醒、情绪识别、多模态对话、物体识别与跟随、手势动作理解等智能交互技术的突破，适配多轮交互与上下文感知复杂场景。广泛应用于家庭陪护、医疗辅助、教育助理及接待引导等开放环境，满足机器人在动态多变情境中的自然对话、情境识别与任务执行需求。采用兼容主流AI开发框架的标准化数据格式，支持模型训练、微调与系统集成，成为赋能具身智能机器人实现人性化、情境感知与主动协作的核心数据基石，推动全球人机融合与交互智能迈入新时代。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 交互类-介绍 -->
+
+    <!-- 交互类-视频 -->
+    <section class="section" style="margin-top: -50px;">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered">
+                    <style>
+                        .dvima {
+                            font-size: inherit;
+                            color: inherit;
+                            text-decoration: none;
+                            transition: color 0.3s;
+                        }
+
+                        .dvima:hover {
+                            color: #007bff;
+                            /* 蓝色 */
+                        }
+                    </style>
+                    <div class="columns">
+                        <div class="column">
+                            <video controls style="width: 100%; height: auto;">
+                                <source src="videos/Interaction/烟火剪辑版本.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="text-align: center; margin-top: 10px; font-size: 20px">烟火数据采集</p>
+                        </div>
+                        <div class="column">
+                            <video controls style="width: 100%; height: auto;">
+                                <source src="videos/Interaction/手势识别.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="text-align: center; margin-top: 10px; font-size: 20px">手势数据采集</p>
+                        </div>
+                        <div class="column">
+                            <video controls style="width: 100%; height: auto;">
+                                <source src="videos/Interaction/消防栓漏水.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="text-align: center; margin-top: 10px; font-size: 20px">消防栓漏水数据采集</p>
+                        </div>
+                    </div>
+                    <div class="columns">
+                        <div class="column">
+                            <video controls style="width: 100%; height: auto;">
+                                <source src="videos/Interaction/安全帽检测1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="text-align: center; margin-top: 10px; font-size: 20px">安全帽数据采集</p>
+                        </div>
+                        <div class="column">
+                            <video controls style="width: 100%; height: auto;">
+                                <source src="videos/Interaction/20240313指针表.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="text-align: center; margin-top: 10px; font-size: 20px">指针表数据采集</p>
+                        </div>
+                        <div class="column">
+                            <video controls style="width: 100%; height: auto;">
+                                <source src="videos/Interaction/34积水.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="text-align: center; margin-top: 10px; font-size: 20px">积水数据采集</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 交互类-视频 -->
+</body>
+
+</html>
